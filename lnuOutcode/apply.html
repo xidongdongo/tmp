@@ -1,0 +1,58 @@
+<!--<!DOCTYPE html>-->
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>申请详情</title>
+		<style>
+			body {
+				background-color: #ffffff;
+				margin: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table  border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="img/test_01.jpg" width="1080" height="1558" alt=""></td>
+			</tr>
+			<tr>
+				<td>
+					<a onclick="Go(1)">
+						<img src="img/test_02.jpg" width="1080" height="173" alt="">
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a onclick="Go(2)">
+						<img src="img/test_03.jpg" width="1080" height="171" alt="">
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="img/test_04.jpg" width="1080" height="170" alt=""></td>
+			</tr>
+			<tr>
+				<td>
+					<img src="img/test_05.jpg" width="1080" height="94" alt=""></td>
+			</tr>
+		</table>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+		<script type="text/javascript" src="js/util.js" ></script>
+		<script>
+			var no = getUrlParam("no");
+			function Go(type){
+				if(type==1){
+					location.href = "out.html?no=" + no;
+				}else{
+					location.href = "fan.html?no=" + no;
+				}
+			}
+		</script>
+	</body>
+
+</html>

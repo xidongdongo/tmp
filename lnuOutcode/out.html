@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>出校通行证(2分钟内有效)</title>
+		<style>
+			body {
+				background-color: #fff;
+				margin: 0;
+			}
+			
+			.logo_img {
+				position: relative;
+				left: 19%;
+			}
+			
+			span {
+				font-size: 50px;
+			}
+			
+			.no_tag {
+				position: relative;
+				top: -21%;
+				left: 30%;
+			}
+			
+			.name_tag {
+				position: relative;
+				top: -12%;
+				left: 30%;
+			}
+			
+			.college_tag {
+				position: relative;
+				top: -2%;
+				left: 30%
+			}
+			
+			.date_tag {
+				position: relative;
+				top: 8%;
+				left: 30%;
+			}
+			
+			.time_tag {
+				font-size: 16em;
+				margin: 40px 0 30px 0;
+				font-weight: 400;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="logo_bg" style="height:618px;background-color: #808081" align="center">
+					<img src="img/out_logo.jpg" alt="" style="margin-top: 7%;width: 80%;">
+					<h1 class="time_tag"></h1>
+				</td>
+			</tr>
+			<tr>
+				<td style="background-image: url(img/out_info.jpg);height: 1033px;">
+					<span class="no_tag">180994303</span><br />
+					<span class="name_tag">王佳宝</span><br />
+					<span class="college_tag">数学院</span><br />
+					<span class="date_tag">2021/10/23</span>
+			</tr>
+			<tr>
+				<td>
+					<img src="img/copyright_03.jpg" width="1080" height="178" alt=""></td>
+			</tr>
+		</table>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/util.js"></script>
+		<script>
+			$(function(){
+				setBgColor();
+				setInterval("getDate()",1);
+	//			setInterval("changeColor()", 300);
+				getUserInfo();
+			})
+
+			
+			// 设置背景颜色
+			function setBgColor(){
+				var c = getColor();
+				$(".logo_bg").css("background-color",c);
+			}
+
+			function changeColor() {
+				var colors = ["#3c91d6", "#a36f50", "#a38cc1", "#ffb259", "#0099a0", "#a38cc1", "#858117", "#0099a0", "#858117"];
+				var number = Math.floor(Math.random() * 9);
+				//				console.log(number);
+				$(".logo_bg").css("background-color", colors[number]);
+
+			}
+
+			// 获取信息
+			function getUserInfo() {
+				var noStr = "180994303";
+				var nameStr = "王佳宝";
+				var no = getUrlParam("no");
+				if(no != null && no != "null" && no != "") {
+					noStr = no;
+					if(no == 180994303) {
+						nameStr = "王佳宝";
+					} else if(no == 190902316) {
+						nameStr = "何雨泉";
+					}
+
+					$(".no_tag").html(noStr);
+					$(".name_tag").html(nameStr);
+
+				}
+			}
+
+			function getDate() {
+				var dateStr = new Date();
+				//获取当前时间年 月 日
+				var year = dateStr.getFullYear(); //年
+				var month = dateStr.getMonth() + 1; //月
+				var day = dateStr.getDate(); //日
+				var h = dateStr.getHours(); //当前小时(0-23)
+				var m = dateStr.getMinutes(); //当前分钟(0-59)
+				var s = dateStr.getSeconds(); //当前秒
+
+				//获取当前时间 
+				var nowStr = year + '/' + conver(month) + "/" + conver(day);
+
+				var timeStr = conver(h) + ':' + conver(m) + ":" + conver(s);
+
+				$(".date_tag").html(nowStr);
+
+				$(".time_tag").html(timeStr);
+			}
+			//日期时间处理
+			function conver(s) {
+				return s < 10 ? '0' + s : s;
+			}
+		</script>
+	</body>
+
+</html>
